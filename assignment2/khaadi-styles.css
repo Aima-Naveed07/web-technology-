@@ -1010,6 +1010,18 @@ body.menu-open {
 
     .hamburger-btn {
         display: flex;
+        order: -1;
+    }
+
+    /* Center the logo on mobile */
+    .logo {
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+    }
+
+    .header-container {
+        position: relative;
     }
 
     .nav-link {
