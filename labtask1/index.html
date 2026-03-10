@@ -31,12 +31,6 @@
                         <path d="M20 20L16 16" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
                     </svg>
                 </button>
-                <!-- Hamburger Menu Button (visible on mobile) -->
-                <button class="hamburger-btn" aria-label="Menu" onclick="toggleMobileMenu()">
-                    <span class="hamburger-line"></span>
-                    <span class="hamburger-line"></span>
-                    <span class="hamburger-line"></span>
-                </button>
                 <button class="icon-btn" aria-label="Wishlist">
                     <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
                         <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z" stroke="currentColor" stroke-width="2"/>
@@ -59,29 +53,6 @@
             </div>
         </div>
     </header>
-
-    <!-- Mobile Navigation Overlay -->
-    <nav class="mobile-nav" id="mobileNav">
-        <div class="mobile-nav-header">
-            <img src="logo.svg" alt="Khaadi Logo" class="mobile-nav-logo">
-            <button class="mobile-nav-close" onclick="toggleMobileMenu()">
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-                    <path d="M18 6L6 18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-                    <path d="M6 6L18 18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-                </svg>
-            </button>
-        </div>
-        <div class="mobile-nav-links">
-            <a href="#" class="mobile-nav-link">NEW IN</a>
-            <a href="#" class="mobile-nav-link active">FROM RAMADAN TO EID</a>
-            <a href="#" class="mobile-nav-link">READY TO WEAR</a>
-            <a href="#" class="mobile-nav-link">FABRICS</a>
-            <a href="#" class="mobile-nav-link">FRAGRANCES</a>
-            <a href="#" class="mobile-nav-link sale">SALE</a>
-            <a href="#" class="mobile-nav-link">NOW HAPPENING</a>
-        </div>
-    </nav>
-    <div class="mobile-nav-overlay" id="mobileNavOverlay" onclick="toggleMobileMenu()"></div>
 
     <!-- Hero Section -->
     <section class="hero">
@@ -529,17 +500,6 @@
             <path d="M21 11.5C21 16.75 16.97 21 12 21C10.73 21 9.52 20.75 8.42 20.3L3 21L4.7 16.58C3.65 15.13 3 13.36 3 11.5C3 6.25 7.03 2 12 2C16.97 2 21 6.25 21 11.5Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
         </svg>
     </button>
-
-    <!-- Mobile Menu Toggle Script -->
-    <script>
-        function toggleMobileMenu() {
-            var nav = document.getElementById('mobileNav');
-            var overlay = document.getElementById('mobileNavOverlay');
-            nav.classList.toggle('open');
-            overlay.classList.toggle('open');
-            document.body.classList.toggle('menu-open');
-        }
-    </script>
 
 </body>
 </html>
