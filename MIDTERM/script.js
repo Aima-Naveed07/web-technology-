@@ -44,3 +44,66 @@ for (var i = 0; i < mobileLinks.length; i++) {
         closeMenu();
     });
 }
+
+// Slick Carousel Implementation
+$(document).ready(function() {
+    // 1. FIRST SLIDER (Products Section)
+    var $firstSlider = $('.first-slider-init');
+    var firstTotalSlides = $firstSlider.children('.product-card').length;
+
+    $firstSlider.slick({
+        infinite: true,
+        autoplay: true,
+        autoplaySpeed: 5000,
+        speed: 800, // Visible slide transition speed
+        pauseOnHover: true,
+        slidesToShow: 3,
+        slidesToScroll: 1,
+        prevArrow: $('.slider-prev'),
+        nextArrow: $('.slider-next'),
+        responsive: [
+            {
+                breakpoint: 1024,
+                settings: { slidesToShow: 2 }
+            },
+            {
+                breakpoint: 768,
+                settings: { slidesToShow: 1 }
+            }
+        ]
+    });
+
+    $firstSlider.on('afterChange', function(event, slick, currentSlide) {
+        $('.first-slider-counter').text('Showing ' + (currentSlide + 1) + ' of ' + firstTotalSlides);
+    });
+
+    // 2. SECOND SLIDER (Bestsellers Section)
+    var $secondSlider = $('.second-slider-init');
+    var secondTotalSlides = $secondSlider.children('.bs-card').length;
+
+    $secondSlider.slick({
+        infinite: true,
+        autoplay: true,
+        autoplaySpeed: 5000,
+        speed: 800, // Visible slide transition speed
+        pauseOnHover: true,
+        slidesToShow: 3,
+        slidesToScroll: 1,
+        prevArrow: $('.bs-slider-prev'),
+        nextArrow: $('.bs-slider-next'),
+        responsive: [
+            {
+                breakpoint: 1024,
+                settings: { slidesToShow: 2 }
+            },
+            {
+                breakpoint: 768,
+                settings: { slidesToShow: 1 }
+            }
+        ]
+    });
+
+    $secondSlider.on('afterChange', function(event, slick, currentSlide) {
+        $('.second-slider-counter').text('Showing ' + (currentSlide + 1) + ' of ' + secondTotalSlides);
+    });
+});
