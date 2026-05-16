@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Register | Khaadi</title>
+  <link rel="stylesheet" href="/css/khaadi-styles.css">
+  <style>
+    .auth-wrap { max-width: 420px; margin: 60px auto; padding: 30px; border: 1px solid #eee; border-radius: 8px; font-family: Arial, sans-serif; }
+    .auth-wrap h2 { text-align: center; margin-bottom: 20px; }
+    .auth-wrap label { display: block; margin: 10px 0 4px; font-size: 14px; }
+    .auth-wrap input { width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 4px; box-sizing: border-box; }
+    .auth-wrap button { width: 100%; padding: 12px; margin-top: 16px; background: #000; color: #fff; border: none; border-radius: 4px; cursor: pointer; font-weight: bold; }
+    .auth-wrap button:hover { background: #333; }
+    .auth-wrap p { text-align: center; margin-top: 14px; font-size: 14px; }
+    .flash { padding: 10px; margin-bottom: 14px; border-radius: 4px; font-size: 14px; }
+    .flash.error   { background: #fdecea; color: #b71c1c; border: 1px solid #f5c6cb; }
+    .flash.success { background: #e8f5e9; color: #1b5e20; border: 1px solid #c3e6cb; }
+  </style>
+</head>
+<body>
+  <div class="auth-wrap">
+    <h2>Create an Account</h2>
+
+    <% if (error && error.length) { %>
+      <div class="flash error"><%= error %></div>
+    <% } %>
+    <% if (success && success.length) { %>
+      <div class="flash success"><%= success %></div>
+    <% } %>
+
+    <form action="/register" method="POST">
+      <label>Full Name</label>
+      <input type="text" name="name" required>
+
+      <label>Email</label>
+      <input type="email" name="email" required>
+
+      <label>Password (min 6 characters)</label>
+      <input type="password" name="password" minlength="6" required>
+
+      <label>Confirm Password</label>
+      <input type="password" name="confirmPassword" minlength="6" required>
+
+      <button type="submit">Register</button>
+    </form>
+
+    <p>Already have an account? <a href="/login">Log in</a></p>
+    <p><a href="/">&larr; Back to site</a></p>
+  </div>
+</body>
+</html>

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>My Profile | Khaadi</title>
+  <link rel="stylesheet" href="/css/khaadi-styles.css">
+  <style>
+    .profile-wrap { max-width: 520px; margin: 60px auto; padding: 30px; border: 1px solid #eee; border-radius: 8px; font-family: Arial, sans-serif; }
+    .profile-wrap h2 { margin-bottom: 18px; }
+    .profile-wrap .row { padding: 10px 0; border-bottom: 1px solid #f0f0f0; }
+    .profile-wrap .label { color: #777; font-size: 13px; text-transform: uppercase; }
+    .profile-wrap .value { font-size: 16px; margin-top: 4px; }
+    .profile-wrap .actions { margin-top: 24px; display: flex; gap: 12px; }
+    .profile-wrap .btn { padding: 10px 16px; background: #000; color: #fff; text-decoration: none; border-radius: 4px; border: none; cursor: pointer; }
+    .profile-wrap .btn.alt { background: #888; }
+    .flash { padding: 10px; margin-bottom: 14px; border-radius: 4px; font-size: 14px; }
+    .flash.success { background: #e8f5e9; color: #1b5e20; border: 1px solid #c3e6cb; }
+    .flash.error   { background: #fdecea; color: #b71c1c; border: 1px solid #f5c6cb; }
+  </style>
+</head>
+<body>
+  <div class="profile-wrap">
+    <h2>My Profile</h2>
+
+    <% if (success && success.length) { %>
+      <div class="flash success"><%= success %></div>
+    <% } %>
+    <% if (error && error.length) { %>
+      <div class="flash error"><%= error %></div>
+    <% } %>
+
+    <div class="row">
+      <div class="label">Name</div>
+      <div class="value"><%= currentUser.name %></div>
+    </div>
+    <div class="row">
+      <div class="label">Email</div>
+      <div class="value"><%= currentUser.email %></div>
+    </div>
+    <div class="row">
+      <div class="label">Role</div>
+      <div class="value"><%= currentUser.role %></div>
+    </div>
+
+    <div class="actions">
+      <a href="/" class="btn alt">&larr; Back to site</a>
+      <form action="/logout" method="POST" style="margin:0;">
+        <button type="submit" class="btn">Log Out</button>
+      </form>
+    </div>
+  </div>
+</body>
+</html>

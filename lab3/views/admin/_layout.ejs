@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title><%= pageTitle %> | Khaadi Admin</title>
+  <link rel="stylesheet" href="/css/admin.css">
+</head>
+<body class="admin-body">
+
+  <!-- Sidebar -->
+  <aside class="admin-sidebar">
+    <div class="brand">
+      KHAADI
+      <small>Admin Panel</small>
+    </div>
+    <nav>
+      <a href="/admin" class="<%= active === 'dashboard' ? 'active' : '' %>">Dashboard</a>
+      <a href="/admin/products/new" class="<%= active === 'new' ? 'active' : '' %>">Add Product</a>
+      <a href="/" class="back-site">&larr; Back to site</a>
+    </nav>
+  </aside>
+
+  <!-- Main content placeholder — included from each page -->

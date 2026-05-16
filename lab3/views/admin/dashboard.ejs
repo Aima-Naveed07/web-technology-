@@ -1,0 +1,63 @@
+<%- include('_layout', { pageTitle: 'Dashboard', active: 'dashboard' }) %>
+
+<main class="admin-main">
+
+  <div class="admin-header">
+    <h1>Product Dashboard</h1>
+    <a href="/admin/products/new" class="btn btn-primary">+ Add New Product</a>
+  </div>
+
+  <!-- Summary stats -->
+  <div class="stats-row">
+    <div class="stat-card">
+      <div class="label">Total Products</div>
+      <div class="value"><%= totalProducts %></div>
+    </div>
+    <div class="stat-card">
+      <div class="label">Total Stock Units</div>
+      <div class="value"><%= totalStock %></div>
+    </div>
+    <div class="stat-card">
+      <div class="label">Categories</div>
+      <div class="value"><%= totalCategories %></div>
+    </div>
+  </div>
+
+  <!-- Products table -->
+  <table class="products-table">
+    <thead>
+      <tr>
+        <th>Image</th>
+        <th>Name</th>
+        <th>Price (PKR)</th>
+        <th>Stock</th>
+        <th>Category</th>
+        <th>Sub-Category</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% if (products.length === 0) { %>
+        <tr><td colspan="7" style="text-align:center; padding:30px;">No products yet. Click "Add New Product" to begin.</td></tr>
+      <% } %>
+      <% products.forEach(p => { %>
+        <tr>
+          <td><img src="<%= p.image %>" alt="<%= p.name %>"></td>
+          <td><%= p.name %></td>
+          <td><%= p.price.toLocaleString() %></td>
+          <td><%= p.stock %></td>
+          <td><%= p.category %></td>
+          <td><%= p.subCategory %></td>
+          <td class="actions-cell">
+            <a href="/admin/products/<%= p._id %>/edit" class="btn btn-edit">Edit</a>
+            <form action="/admin/products/<%= p._id %>/delete" method="POST"
+                  onsubmit="return confirm('Are you sure you want to delete \'<%= p.name %>\'? This action cannot be undone.');">
+              <button type="submit" class="btn btn-delete">Delete</button>
+            </form>
+          </td>
+        </tr>
+      <% }) %>
+    </tbody>
+  </table>
+
+<%- include('_footer') %>

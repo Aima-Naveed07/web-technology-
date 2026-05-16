@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Checkout | Khaadi</title>
+  <link rel="stylesheet" href="/css/khaadi-styles.css">
+  <style>
+    .checkout-wrap { max-width: 600px; margin: 60px auto; padding: 30px; border: 1px solid #eee; border-radius: 8px; font-family: Arial, sans-serif; text-align: center; }
+    .checkout-wrap h2 { margin-bottom: 14px; }
+    .checkout-wrap a { color: #000; }
+    .flash { padding: 10px; margin-bottom: 14px; border-radius: 4px; font-size: 14px; }
+    .flash.success { background: #e8f5e9; color: #1b5e20; border: 1px solid #c3e6cb; }
+    .flash.error   { background: #fdecea; color: #b71c1c; border: 1px solid #f5c6cb; }
+  </style>
+</head>
+<body>
+  <div class="checkout-wrap">
+    <% if (success && success.length) { %>
+      <div class="flash success"><%= success %></div>
+    <% } %>
+    <% if (error && error.length) { %>
+      <div class="flash error"><%= error %></div>
+    <% } %>
+
+    <h2>Checkout</h2>
+    <p>Welcome, <strong><%= currentUser.name %></strong>. This is a protected page — only logged-in users can see it.</p>
+    <p><a href="/">&larr; Continue shopping</a></p>
+  </div>
+</body>
+</html>
