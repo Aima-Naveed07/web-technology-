@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KHAADI - <%= pageTitle %></title>
+    <link rel="stylesheet" href="/css/khaadi-styles.css">
+    <script src="/js/script.js" defer></script>
+</head>
+<body>
+    <header class="header">
+        <div class="header-container">
+            <button class="hamburger-btn" aria-label="Menu">
+                <span class="hamburger-line"></span>
+                <span class="hamburger-line"></span>
+                <span class="hamburger-line"></span>
+            </button>
+            <div class="logo">
+                <a href="/"><img src="/logo.svg" alt="Khaadi Logo"></a>
+            </div>
+            <nav class="main-nav">
+                <a href="/newIN"       class="nav-link <%= activeNav === 'newIN'       ? 'active' : '' %>">NEW IN</a>
+                <a href="/readyToWear" class="nav-link <%= activeNav === 'readyToWear' ? 'active' : '' %>">READY TO WEAR</a>
+                <a href="/fabrics"     class="nav-link <%= activeNav === 'fabrics'     ? 'active' : '' %>">FABRICS</a>
+                <a href="/sale"        class="nav-link sale <%= activeNav === 'sale'   ? 'active' : '' %>">SALE</a>
+            </nav>
+            <div class="header-icons">
+                <div class="auth-strip" style="display:flex; align-items:center; gap:14px; margin-right:14px; font-size:11px; font-weight:600; letter-spacing:0.6px; text-transform:uppercase;">
+                  <% if (typeof currentUser !== 'undefined' && currentUser) { %>
+                    <a href="/profile" style="color:#000; text-decoration:none;">My Profile</a>
+                    <% if (currentUser.role === 'admin') { %>
+                      <a href="/admin" style="color:#000; text-decoration:none;">Admin</a>
+                    <% } %>
+                    <form action="/logout" method="POST" style="margin:0;">
+                      <button type="submit" style="background:none; border:none; padding:0; color:#000; font:inherit; cursor:pointer; text-transform:uppercase; letter-spacing:0.6px;">Logout</button>
+                    </form>
+                  <% } else { %>
+                    <a href="/login" style="color:#000; text-decoration:none;">Login</a>
+                    <a href="/register" style="color:#000; text-decoration:none;">Register</a>
+                  <% } %>
+                </div>
+                <button class="icon-btn" aria-label="Search">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                        <circle cx="11" cy="11" r="7" stroke="currentColor" stroke-width="2"/>
+                        <path d="M20 20L16 16" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                    </svg>
+                </button>
+                <button class="icon-btn" aria-label="Wishlist">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                        <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z" stroke="currentColor" stroke-width="2"/>
+                    </svg>
+                </button>
+                <button class="icon-btn" aria-label="Account">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                        <circle cx="12" cy="8" r="4" stroke="currentColor" stroke-width="2"/>
+                        <path d="M6 21C6 17 8 14 12 14C16 14 18 17 18 21" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                    </svg>
+                </button>
+                <button class="icon-btn cart-btn" aria-label="Cart">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                        <path d="M6 6H22L20 16H8L6 6Z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
+                        <path d="M6 6L5 2H2" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        <circle cx="9" cy="20" r="1.5" fill="currentColor"/>
+                        <circle cx="18" cy="20" r="1.5" fill="currentColor"/>
+                    </svg>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <% if ((success && success.length) || (error && error.length)) { %>
+      <div style="max-width:1200px; margin:14px auto 0; padding:0 20px;">
+        <% if (success && success.length) { %>
+          <div style="background:#e8f5e9; color:#1b5e20; border:1px solid #c3e6cb; padding:12px 16px; border-radius:4px; font-family:Arial,sans-serif; font-size:14px; margin-bottom:8px;">
+            <%= success %>
+          </div>
+        <% } %>
+        <% if (error && error.length) { %>
+          <div style="background:#fdecea; color:#b71c1c; border:1px solid #f5c6cb; padding:12px 16px; border-radius:4px; font-family:Arial,sans-serif; font-size:14px;">
+            <%= error %>
+          </div>
+        <% } %>
+      </div>
+    <% } %>
+
+    <nav class="mobile-nav" id="mobileNav">
+        <div class="mobile-nav-header">
+            <a href="/"><img src="/logo.svg" alt="Khaadi Logo" class="mobile-nav-logo"></a>
+            <button class="mobile-nav-close" id="mobileNavClose">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                    <path d="M18 6L6 18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                    <path d="M6 6L18 18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                </svg>
+            </button>
+        </div>
+        <div class="mobile-nav-links">
+            <a href="/newIN"       class="mobile-nav-link">NEW IN</a>
+            <a href="/readyToWear" class="mobile-nav-link">READY TO WEAR</a>
+            <a href="/fabrics"     class="mobile-nav-link">FABRICS</a>
+            <a href="/sale"        class="mobile-nav-link sale">SALE</a>
+        </div>
+    </nav>
+    <div class="mobile-nav-overlay" id="mobileNavOverlay"></div>
+
+    <main class="catalog-wrapper">
+        <h1 class="catalog-title"><%= pageTitle %></h1>
+
+        <!-- Filter Bar -->
+        <form class="filter-bar" method="GET" action="">
+            <input type="text"   name="search"      class="filter-input search-input" placeholder="Search products..." value="<%= query.search || '' %>">
+            <select              name="subCategory" class="filter-select">
+                <option value="" <%= !query.subCategory ? 'selected' : '' %>>All</option>
+                <% subCategories.forEach(function(cat) { %>
+                    <option value="<%= cat %>" <%= query.subCategory === cat ? 'selected' : '' %>>
+                        <%= cat.charAt(0).toUpperCase() + cat.slice(1) %>
+                    </option>
+                <% }); %>
+            </select>
+            <input type="number" name="minPrice"    class="filter-input filter-price" placeholder="Min Price" value="<%= query.minPrice || '' %>" min="0">
+            <input type="number" name="maxPrice"    class="filter-input filter-price" placeholder="Max Price" value="<%= query.maxPrice || '' %>" min="0">
+            <button type="submit" class="filter-btn">Filter</button>
+            <a href="/<%= activeNav %>" class="filter-clear">Clear</a>
+        </form>
+
+        <!-- Product Count -->
+        <p class="product-count">
+            <% if (total === 0) { %>
+                No products found
+            <% } else { %>
+                Showing <%= (currentPage - 1) * 8 + 1 %>–<%= Math.min(currentPage * 8, total) %> of <%= total %> products
+            <% } %>
+        </p>
+
+        <!-- Products Grid -->
+        <% if (products.length === 0) { %>
+            <div class="no-products">
+                <p>No products match your filters.</p>
+                <a href="/<%= activeNav %>">Clear all filters</a>
+            </div>
+        <% } else { %>
+            <div class="products-grid">
+                <% products.forEach(function(product) { %>
+                    <div class="catalog-card">
+                        <div class="catalog-card-img">
+                            <img src="<%= product.image %>" alt="<%= product.name %>">
+                            <button class="wishlist-btn" aria-label="Add to wishlist">&#9825;</button>
+                        </div>
+                        <div class="catalog-card-info">
+                            <p class="catalog-sub-cat"><%= product.subCategory %></p>
+                            <p class="catalog-name"><%= product.name %></p>
+                            <div class="catalog-rating">
+                                <% for (let s = 1; s <= 5; s++) { %>
+                                    <span class="star <%= s <= Math.round(product.rating) ? 'filled' : '' %>">&#9733;</span>
+                                <% } %>
+                                <span class="rating-num">(<%= product.rating %>)</span>
+                            </div>
+                            <p class="catalog-price">PKR <%= product.price.toLocaleString() %></p>
+                            <p class="catalog-stock <%= product.stock < 10 ? 'low-stock' : '' %>">
+                                Stock: <%= product.stock %>
+                            </p>
+                        </div>
+                    </div>
+                <% }); %>
+            </div>
+        <% } %>
+
+        <!-- Pagination -->
+        <% if (totalPages > 1) { %>
+            <%
+            function pageUrl(p) {
+                var params = [];
+                if (query.search)      params.push('search='      + encodeURIComponent(query.search));
+                if (query.subCategory) params.push('subCategory=' + encodeURIComponent(query.subCategory));
+                if (query.minPrice)    params.push('minPrice='    + encodeURIComponent(query.minPrice));
+                if (query.maxPrice)    params.push('maxPrice='    + encodeURIComponent(query.maxPrice));
+                params.push('page=' + p);
+                return '?' + params.join('&');
+            }
+            %>
+            <div class="pagination-bar">
+                <% if (currentPage > 1) { %>
+                    <a href="<%= pageUrl(currentPage - 1) %>" class="page-btn">&#8592; Prev</a>
+                <% } else { %>
+                    <span class="page-btn disabled">&#8592; Prev</span>
+                <% } %>
+
+                <% for (let i = 1; i <= totalPages; i++) { %>
+                    <a href="<%= pageUrl(i) %>" class="page-btn <%= currentPage === i ? 'page-active' : '' %>"><%= i %></a>
+                <% } %>
+
+                <% if (currentPage < totalPages) { %>
+                    <a href="<%= pageUrl(currentPage + 1) %>" class="page-btn">Next &#8594;</a>
+                <% } else { %>
+                    <span class="page-btn disabled">Next &#8594;</span>
+                <% } %>
+            </div>
+        <% } %>
+    </main>
+</body>
+</html>

@@ -1,0 +1,225 @@
+/* ===== Admin Panel Styles ===== */
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body.admin-body {
+  font-family: 'Segoe UI', Tahoma, sans-serif;
+  background: #f4f6f9;
+  color: #333;
+  min-height: 100vh;
+  display: flex;
+}
+
+/* Sidebar */
+.admin-sidebar {
+  width: 240px;
+  background: #1f2937;
+  color: #fff;
+  min-height: 100vh;
+  padding: 24px 0;
+  position: fixed;
+  left: 0; top: 0;
+}
+
+.admin-sidebar .brand {
+  padding: 0 24px 24px;
+  border-bottom: 1px solid #374151;
+  font-size: 20px;
+  font-weight: bold;
+  letter-spacing: 1px;
+  color: #c85a3a;
+}
+
+.admin-sidebar .brand small {
+  display: block;
+  font-size: 11px;
+  color: #9ca3af;
+  font-weight: normal;
+  letter-spacing: 0.5px;
+  margin-top: 4px;
+}
+
+.admin-sidebar nav { margin-top: 20px; }
+
+.admin-sidebar nav a {
+  display: block;
+  padding: 12px 24px;
+  color: #d1d5db;
+  text-decoration: none;
+  border-left: 3px solid transparent;
+  transition: all 0.2s;
+}
+
+.admin-sidebar nav a:hover,
+.admin-sidebar nav a.active {
+  background: #111827;
+  color: #fff;
+  border-left-color: #c85a3a;
+}
+
+.admin-sidebar .back-site {
+  position: absolute;
+  bottom: 20px;
+  left: 24px;
+  font-size: 13px;
+  color: #9ca3af;
+}
+
+/* Main content */
+.admin-main {
+  margin-left: 240px;
+  flex: 1;
+  padding: 30px 40px;
+}
+
+.admin-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+  padding-bottom: 16px;
+  border-bottom: 2px solid #e5e7eb;
+}
+
+.admin-header h1 {
+  font-size: 24px;
+  color: #1f2937;
+}
+
+/* Buttons */
+.btn {
+  display: inline-block;
+  padding: 8px 18px;
+  border: none;
+  border-radius: 4px;
+  font-size: 14px;
+  cursor: pointer;
+  text-decoration: none;
+  font-weight: 500;
+  transition: opacity 0.2s;
+}
+
+.btn:hover { opacity: 0.85; }
+.btn-primary { background: #c85a3a; color: #fff; }
+.btn-edit    { background: #2563eb; color: #fff; padding: 6px 12px; font-size: 13px; }
+.btn-delete  { background: #dc2626; color: #fff; padding: 6px 12px; font-size: 13px; }
+.btn-cancel  { background: #6b7280; color: #fff; }
+
+/* Table */
+.products-table {
+  width: 100%;
+  background: #fff;
+  border-collapse: collapse;
+  border-radius: 6px;
+  overflow: hidden;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+}
+
+.products-table thead {
+  background: #1f2937;
+  color: #fff;
+}
+
+.products-table th,
+.products-table td {
+  padding: 12px 16px;
+  text-align: left;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.products-table tbody tr:hover { background: #f9fafb; }
+
+.products-table img {
+  width: 50px;
+  height: 50px;
+  object-fit: cover;
+  border-radius: 4px;
+}
+
+.actions-cell { white-space: nowrap; }
+.actions-cell form { display: inline; }
+
+/* Form */
+.admin-form {
+  background: #fff;
+  padding: 30px;
+  border-radius: 6px;
+  max-width: 600px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+}
+
+.form-group { margin-bottom: 18px; }
+
+.form-group label {
+  display: block;
+  margin-bottom: 6px;
+  font-weight: 600;
+  font-size: 14px;
+  color: #374151;
+}
+
+.form-group input,
+.form-group select {
+  width: 100%;
+  padding: 10px 12px;
+  border: 1px solid #d1d5db;
+  border-radius: 4px;
+  font-size: 14px;
+}
+
+.form-group input:focus,
+.form-group select:focus {
+  outline: none;
+  border-color: #c85a3a;
+}
+
+.form-group .current-image {
+  display: block;
+  width: 100px;
+  margin-top: 8px;
+  border-radius: 4px;
+}
+
+.form-actions {
+  display: flex;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+/* Stats cards */
+.stats-row {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.stat-card {
+  background: #fff;
+  padding: 20px;
+  border-radius: 6px;
+  border-left: 4px solid #c85a3a;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+}
+
+.stat-card .label {
+  font-size: 12px;
+  color: #6b7280;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.stat-card .value {
+  font-size: 26px;
+  font-weight: bold;
+  color: #1f2937;
+  margin-top: 4px;
+}
+
+.flash {
+  padding: 12px 16px;
+  border-radius: 4px;
+  margin-bottom: 20px;
+  background: #fee2e2;
+  color: #991b1b;
+  border: 1px solid #fecaca;
+}

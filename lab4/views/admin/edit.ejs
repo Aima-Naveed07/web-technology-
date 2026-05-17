@@ -1,0 +1,66 @@
+<%- include('_layout', { pageTitle: 'Edit Product', active: '' }) %>
+
+<main class="admin-main">
+
+  <div class="admin-header">
+    <h1>Edit Product</h1>
+    <a href="/admin" class="btn btn-cancel">&larr; Back to Dashboard</a>
+  </div>
+
+  <% if (typeof error !== 'undefined' && error) { %>
+    <div class="flash"><%= error %></div>
+  <% } %>
+
+  <form action="/admin/products/<%= product._id %>" method="POST" enctype="multipart/form-data" class="admin-form">
+
+    <div class="form-group">
+      <label for="name">Product Name *</label>
+      <input type="text" id="name" name="name" value="<%= product.name %>" required>
+    </div>
+
+    <div class="form-group">
+      <label for="price">Price (PKR) *</label>
+      <input type="number" id="price" name="price" min="1" value="<%= product.price %>" required>
+    </div>
+
+    <div class="form-group">
+      <label for="category">Category *</label>
+      <select id="category" name="category" required>
+        <option value="new-in"        <%= product.category === 'new-in'        ? 'selected' : '' %>>New In</option>
+        <option value="ready-to-wear" <%= product.category === 'ready-to-wear' ? 'selected' : '' %>>Ready to Wear</option>
+        <option value="fabrics"       <%= product.category === 'fabrics'       ? 'selected' : '' %>>Fabrics</option>
+        <option value="sale"          <%= product.category === 'sale'          ? 'selected' : '' %>>Sale</option>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label for="subCategory">Sub-Category *</label>
+      <select id="subCategory" name="subCategory" required>
+        <option value="lawn"    <%= product.subCategory === 'lawn'    ? 'selected' : '' %>>Lawn</option>
+        <option value="khaddar" <%= product.subCategory === 'khaddar' ? 'selected' : '' %>>Khaddar</option>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label for="stock">Stock Quantity *</label>
+      <input type="number" id="stock" name="stock" min="0" value="<%= product.stock %>" required>
+    </div>
+
+    <div class="form-group">
+      <label for="rating">Rating (0-5)</label>
+      <input type="number" id="rating" name="rating" min="0" max="5" step="0.1" value="<%= product.rating %>">
+    </div>
+
+    <div class="form-group">
+      <label for="image">Product Image (leave empty to keep current)</label>
+      <input type="file" id="image" name="image" accept="image/*">
+      <img src="<%= product.image %>" alt="Current image" class="current-image">
+    </div>
+
+    <div class="form-actions">
+      <button type="submit" class="btn btn-primary">Update Product</button>
+      <a href="/admin" class="btn btn-cancel">Cancel</a>
+    </div>
+  </form>
+
+<%- include('_footer') %>
